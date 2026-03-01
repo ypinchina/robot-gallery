@@ -1,14 +1,21 @@
 import React from "react";
-import "./App.css";
 import robots from "./mockdata/robots.json";
-import Robots from "./components/robots";
+import logo from './assets/images/logo.svg'
+import Robots from "./components/Robots";
+import style from "./App.module.css";
 function App() {
   return (
-    <ul>
-      {robots.map((robot) => (
-        <Robots key={robot.id} {...robot} />
-      ))}
-    </ul>
+    <div className={style.app}>
+      <div className={style.appHeader}>
+        <img src={logo} className={style.appLogo} alt="" />
+        <h1>罗伯特机器人画廊</h1>
+      </div>
+      <div className={style.robotList}>
+        {robots.map((robot) => (
+          <Robots {...robot} key={robot.id} />
+        ))}
+      </div>
+    </div>
   );
 }
 
