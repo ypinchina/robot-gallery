@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 // import robots from "./mockdata/robots.json";
 import logo from "./assets/images/logo.svg";
-import Robots from "./components/Robots";
+import Robots from "./components/robots";
+import RobotsDiscount from "./components/robotsDiscount";
 import style from "./App.module.css";
 import ShopCart from "./components/ShopCart";
 
@@ -50,14 +51,16 @@ const App: React.FC = () => {
         </button>
         <span>计数: {count}</span>
       </div>
-      {
-        error ? '发现错误:' + error : ''
-      }
+      {error ? "发现错误:" + error : ""}
       {!loading ? (
         <div className={style.robotList}>
-          {robotsGalleryList.map((robot) => (
-            <Robots {...robot} key={robot.id} />
-          ))}
+          {robotsGalleryList.map((robot, index) =>
+            index % 2 === 0 ? (
+              <RobotsDiscount {...robot} key={robot.id} />
+            ) : (
+              <Robots {...robot} key={robot.id} />
+            ),
+          )}
         </div>
       ) : (
         <h2>数据加载中...</h2>

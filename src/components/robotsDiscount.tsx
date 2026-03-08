@@ -7,7 +7,7 @@ interface RobotProps {
   name: string;
   email: string;
 }
-const Robots: React.FC<RobotProps> = ({ id, name, email }) => {
+const RobotsDiscount: React.FC<RobotProps> = ({ id, name, email }) => {
   const { authorName } = React.useContext(appContext);
   const setState = React.useContext(setStateContext);
   const addToCartClick = () => {
@@ -24,6 +24,7 @@ const Robots: React.FC<RobotProps> = ({ id, name, email }) => {
   return (
     <div className={style.cardContainer}>
       <img src={`https://robohash.org/${id}`} alt={name} />
+      <div>折扣商品</div>
       <h2>{name}</h2>
       <p>{email}</p>
       <div>作者：{authorName}</div>
@@ -32,4 +33,4 @@ const Robots: React.FC<RobotProps> = ({ id, name, email }) => {
   );
 };
 
-export default Robots;
+export default RobotsDiscount;
