@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 // import robots from "./mockdata/robots.json";
 import logo from "./assets/images/logo.svg";
-import Robots from "./components/robots";
-import RobotsDiscount from "./components/robotsDiscount";
+import Robots from "./components/Robots";
+import RobotsDiscount from "./components/RobotsDiscount";
 import style from "./App.module.css";
 import ShopCart from "./components/ShopCart";
 

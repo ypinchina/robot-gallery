@@ -2,34 +2,24 @@ import React from "react";
 import style from "./Robots.module.css";
 import { appContext } from "../appState";
 import { setStateContext } from "../appState";
-interface RobotProps {
+import { withAddToCart } from "./AddToCart";
+export interface RobotProps {
   id: number;
   name: string;
   email: string;
+  addToCartClick: (id: number, name: string) => void;
 }
-const Robots: React.FC<RobotProps> = ({ id, name, email }) => {
+const Robots: React.FC<RobotProps> = ({ id, name, email, addToCartClick }) => {
   const { authorName } = React.useContext(appContext);
-  const setState = React.useContext(setStateContext);
-  const addToCartClick = () => {
-    if (setState) {
-      setState((prevState) => ({
-        ...prevState,
-        shoppingCart: {
-          ...prevState.shoppingCart,
-          items: [...prevState.shoppingCart.items, { id, name }],
-        },
-      }));
-    }
-  };
   return (
     <div className={style.cardContainer}>
       <img src={`https://robohash.org/${id}`} alt={name} />
       <h2>{name}</h2>
       <p>{email}</p>
       <div>作者：{authorName}</div>
-      <button onClick={addToCartClick}>加入购物车</button>
+      <button onClick={() => addToCartClick(id, name)}>加入购物车</button>
     </div>
   );
 };
 
-export default Robots;
+export default withAddToCart(Robots);
